@@ -15,6 +15,9 @@ use Type::Utils -all;
 use Types::Standard -types;
 use PerlX::Maybe;
 
+# RECOMMEND PREREQ: PerlX::Maybe::XS
+# RECOMMEND PREREQ: Type::Tiny::XS
+
 our $Blob = _generate_type(
     name                 => 'Blob',
     parent               => Str,
