@@ -10,7 +10,7 @@ subtest 'no size' => sub {
 
     no warnings 'void';
 
-    my $type = Varchar, 'Varchar';
+    my $type = Varchar;
 
     isa_ok $type => 'Type::Tiny';
 
@@ -30,7 +30,7 @@ subtest 'size' => sub {
     no warnings 'void';
 
     my $size = 12;
-    my $type = Varchar [$size], 'Varchar';
+    my $type = Varchar [$size];
 
     isa_ok $type => 'Type::Tiny';
 
@@ -48,10 +48,8 @@ subtest 'size' => sub {
 
 subtest 'maybe size' => sub {
 
-    no warnings 'void';
-
     my $size = 12;
-    my $type = Maybe [ Varchar [$size] ], 'Varchar';
+    my $type = Maybe [ Varchar [$size] ];
 
     isa_ok $type => 'Type::Tiny';
 
@@ -69,8 +67,6 @@ subtest 'maybe size' => sub {
 };
 
 subtest 'bad size' => sub {
-
-    no warnings 'void';
 
     throws_ok {
         my $type = Varchar ['x'];

@@ -7,9 +7,7 @@ use Types::SQL::Util;
 
 subtest 'no size' => sub {
 
-    no warnings 'void';
-
-    my $type = Serial, 'Serial';
+    my $type = Serial;
 
     isa_ok $type => 'Type::Tiny';
 
@@ -27,10 +25,8 @@ subtest 'no size' => sub {
 
 subtest 'size' => sub {
 
-    no warnings 'void';
-
     my $size = 12;
-    my $type = Serial [$size], 'Serial';
+    my $type = Serial [$size];
 
     isa_ok $type => 'Type::Tiny';
 
@@ -48,8 +44,6 @@ subtest 'size' => sub {
 };
 
 subtest 'bad size' => sub {
-
-    no warnings 'void';
 
     throws_ok {
         my $type = Serial ['x'];

@@ -7,9 +7,7 @@ use Types::SQL::Util;
 
 subtest 'no size' => sub {
 
-    no warnings 'void';
-
-    my $type = Text, 'Text';
+    my $type = Text;
 
     isa_ok $type => 'Type::Tiny';
 
