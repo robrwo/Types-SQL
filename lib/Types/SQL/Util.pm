@@ -1,6 +1,11 @@
 package Types::SQL::Util;
 
+# ABSTRACT: Extract DBIx::Class column_info from types
+
 use strictures;
+
+use version;
+$Types::SQL::Util::VERSION = version->declare('v0.0.1');
 
 use Exporter qw/ import /;
 

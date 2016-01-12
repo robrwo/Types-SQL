@@ -1,6 +1,11 @@
 package Types::SQL;
 
+# ABSTRACT: A library of SQL types
+
 use strictures;
+
+use version;
+$Types::SQL::VERSION = version->declare('v0.0.1');
 
 use Type::Library
   -base,
