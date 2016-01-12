@@ -9,11 +9,23 @@ $Types::SQL::VERSION = version->declare('v0.0.1');
 
 use Type::Library
   -base,
-  -declare => qw/ Integer Serial Text Varchar /;
+  -declare => qw/ Char Integer Serial Text Varchar /;
 
 use Type::Utils -all;
 use Types::Standard -types;
 use PerlX::Maybe;
+
+our $Blob = _generate_type(
+    name                 => 'Blob',
+    parent               => Str,
+    dbic_column_info     => sub {
+        my ( $self ) = @_;
+        return (
+            is_numeric => 0,
+            data_type  => 'blob',
+        );
+    },
+);
 
 our $Text = _generate_type(
     name                 => 'Text',
@@ -37,6 +49,21 @@ our $Varchar = _generate_type(
         return (
             $parent->( $self->parent, $size || $self->type_parameter ),
             data_type => 'varchar',
+            maybe size => $size || $self->type_parameter,
+        );
+    },
+);
+
+our $Char = _generate_type(
+    name                 => 'Char',
+    parent               => $Text,
+    constraint_generator => \&_size_constraint_generator,
+    dbic_column_info     => sub {
+        my ( $self, $size ) = @_;
+        my $parent = $self->parent->my_methods->{dbic_column_info};
+        return (
+            $parent->( $self->parent, $size || $self->type_parameter ),
+            data_type => 'char',
             maybe size => $size || $self->type_parameter,
         );
     },
