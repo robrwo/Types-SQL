@@ -46,6 +46,10 @@ subtest 'size' => sub {
       'column_info'
       or note( explain \%info );
 
+    ok !$type->check(undef), 'check (undef)';
+    ok $type->check( '1' x $size ), 'check';
+    ok !$type->check( '1' x ( $size + 1 ) ), 'check';
+
 };
 
 subtest 'maybe size' => sub {
@@ -65,6 +69,10 @@ subtest 'maybe size' => sub {
       },
       'column_info'
       or note( explain \%info );
+
+    ok $type->check(undef), 'check (undef)';
+    ok $type->check( '1' x $size ), 'check';
+    ok !$type->check( '1' x ( $size + 1 ) ), 'check';
 
 };
 
