@@ -9,8 +9,9 @@ $Types::SQL::VERSION = version->declare('v0.0.1');
 
 use Type::Library
   -base,
-  -declare => qw/ Char Integer Serial Text Varchar /;
+  -declare => qw/ Char Integer Numeric Serial Text Varchar /;
 
+use Ref::Util qw/ is_arrayref /;
 use Type::Utils -all;
 use Types::Standard -types;
 use PerlX::Maybe;
@@ -101,11 +102,44 @@ our $Serial = _generate_type(
     },
 );
 
+our $Numeric = _generate_type(
+    name                 => 'Numeric',
+    parent               => Num,
+    constraint_generator => \&_size_range_constraint_generator,
+    dbic_column_info     => sub {
+        my ( $self, $size ) = @_;
+        return (
+            data_type  => 'numeric',
+            is_numeric => 1,
+            maybe size => $size || $self->parameters,
+        );
+    },
+);
+
 sub _size_constraint_generator {
     if (@_) {
         my ($size) = @_;
         die "Size must be a positive integer" unless $size =~ /^[1-9]\d*$/;
         my $re = qr/^0*\d{1,$size}$/;
+        return sub { $_ =~ $re };
+    }
+    else {
+        return sub { $_ =~ /^\d+$/ };
+    }
+}
+
+sub _size_range_constraint_generator {
+    if (@_) {
+        my ( $prec, $scale ) = @_;
+        $scale ||= 0;
+
+        die "Precision must be a positive integer" unless $prec =~ /^[1-9]\d*$/;
+        die "Scale must be a positive integer"     unless $scale =~ /^\d+$/;
+
+        my $left = $prec - $scale;
+        die "Scale must be less than the precision" if ( $left < 0 );
+
+        my $re = qr/^0*\d{0,$left}([.]\d{0,$scale}0*)?$/;
         return sub { $_ =~ $re };
     }
     else {
