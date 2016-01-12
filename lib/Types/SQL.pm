@@ -19,10 +19,10 @@ use PerlX::Maybe;
 # RECOMMEND PREREQ: Type::Tiny::XS
 
 our $Blob = _generate_type(
-    name                 => 'Blob',
-    parent               => Str,
-    dbic_column_info     => sub {
-        my ( $self ) = @_;
+    name             => 'Blob',
+    parent           => Str,
+    dbic_column_info => sub {
+        my ($self) = @_;
         return (
             is_numeric => 0,
             data_type  => 'blob',
@@ -31,10 +31,10 @@ our $Blob = _generate_type(
 );
 
 our $Text = _generate_type(
-    name                 => 'Text',
-    parent               => Str,
-    dbic_column_info     => sub {
-        my ( $self ) = @_;
+    name             => 'Text',
+    parent           => Str,
+    dbic_column_info => sub {
+        my ($self) = @_;
         return (
             is_numeric => 0,
             data_type  => 'text',
@@ -79,7 +79,7 @@ our $Integer = _generate_type(
     dbic_column_info     => sub {
         my ( $self, $size ) = @_;
         return (
-             data_type  => 'integer',
+            data_type  => 'integer',
             is_numeric => 1,
             maybe size => $size || $self->type_parameter,
         );
