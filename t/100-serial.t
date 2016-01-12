@@ -2,6 +2,8 @@
 
 use Test::Most;
 
+use if $ENV{AUTHOR_TESTING} || $ENV{RELEASE_TESTING}, 'Test::Warnings';
+
 use Types::SQL qw/ Serial /;
 use Types::SQL::Util;
 
