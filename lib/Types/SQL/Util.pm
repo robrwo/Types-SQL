@@ -22,7 +22,7 @@ sub column_info_from_type {
     my $name    = $type->name;
     my $methods = $type->my_methods;
 
-    if ( $name eq '__ANON__' ) {
+    if ( $type->is_anon ) {
         $name    = $type->parent->name;
         $methods = $type->parent->my_methods;
     }
