@@ -14,7 +14,7 @@ subtest 'no size' => sub {
     my %info = column_info_from_type($type);
 
     is_deeply \%info => {
-        data_type         => 'integer',
+        data_type         => 'serial',
         is_auto_increment => 1,
         is_numeric        => 1,
       },
@@ -33,7 +33,7 @@ subtest 'size' => sub {
     my %info = column_info_from_type($type);
 
     is_deeply \%info => {
-        data_type         => 'integer',
+        data_type         => 'serial',
         is_auto_increment => 1,
         is_numeric        => 1,
         size              => $size,
