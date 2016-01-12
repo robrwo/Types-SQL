@@ -22,7 +22,7 @@ sub column_info_from_type {
     my $name    = $type->name;
     my $methods = $type->my_methods;
 
-    if ( $type->is_anon ) {
+    if ( $type->is_anon && $type->has_parent ) {
         $name    = $type->parent->name;
         $methods = $type->parent->my_methods;
     }
@@ -44,16 +44,6 @@ sub column_info_from_type {
 
     if ( $name eq 'Int' ) {
         return ( data_type => 'integer', is_numeric => 1 );
-    }
-
-    if ( $name eq 'Serial' ) {    #
-        return (
-            data_type         => 'integer',
-            is_auto_increment => 1,
-            is_numeric        => 1,
-            is_nullable       => 0,
-            maybe size        => $type->type_parameter
-        );
     }
 
 }
