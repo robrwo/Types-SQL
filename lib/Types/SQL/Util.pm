@@ -107,9 +107,7 @@ sub column_info_from_type {
         return ( data_type => 'integer', is_numeric => 1 );
     }
 
-
-    die sprintf('Unsupported type: %s', ref $type);
-
+    die "Unsupported type: ${name}";
 }
 
 =head1 SEE ALSO
