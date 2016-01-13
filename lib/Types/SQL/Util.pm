@@ -112,7 +112,7 @@ sub column_info_from_type {
       return @info if @info;
     }
 
-    die "Unsupported type: ${name}";
+    die "Unsupported type: " . $type->display_name;
 }
 
 =head1 CUSTOM TYPES
