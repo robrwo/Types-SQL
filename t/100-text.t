@@ -4,7 +4,7 @@ use Test::Most;
 
 use if $ENV{AUTHOR_TESTING} || $ENV{RELEASE_TESTING}, 'Test::Warnings';
 
-use Types::SQL qw/ Text /;
+use Types::SQL -types;
 use Types::SQL::Util;
 
 subtest 'no size' => sub {
