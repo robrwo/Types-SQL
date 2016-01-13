@@ -1,6 +1,8 @@
 Revision history for Types-SQL
 
 {{$NEXT}}
+  [Other Changes]
+  - Added more QA tests for developers.
 
 v0.0.2    2016-01-13 14:35:01+00:00 Europe/London
   [Enhancements]
