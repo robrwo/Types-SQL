@@ -1,4 +1,6 @@
-Revision history for Types-SQL
+Revision history for {{$dist->name}}
+
+{{$NEXT}}
 
 v0.0.1    2016-01-13 10:59:10+00:00 Europe/London
   - First prototype published on GitHub.
