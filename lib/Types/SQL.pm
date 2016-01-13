@@ -3,7 +3,7 @@ package Types::SQL;
 use strictures;
 
 use version;
-$Types::SQL::VERSION = version->declare('v0.0.1');
+$Types::SQL::VERSION = version->declare('v0.0.2');
 
 use Type::Library
   -base,
@@ -234,6 +234,31 @@ sub _generate_type {
     __PACKAGE__->meta->add_type($type);
     return $type;
 }
+
+=head1 CUSTOM TYPES
+
+Any type that has these types as a parent can have xolumn information
+extracted using L<Types::SQL::Util>.
+
+Alternatively, you can specify a custom C<dbic_column_info> method in
+a type, e.g.:
+
+  my $type = Type::Tiny->new(
+    name       => 'MyType',
+    my_methods => {
+      dbic_column_info => sub {
+        my ($self) = @_;
+        return (
+           data_type    => 'custom',
+           parameter    => 1234,
+        );
+      },
+    },
+    ...
+  );
+
+The method should return a hash of values that are passed to the
+C<add_column> method of L<DBIx::Class::ResultSource>.
 
 =for readme continue
 

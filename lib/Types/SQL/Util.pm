@@ -3,7 +3,7 @@ package Types::SQL::Util;
 use strictures;
 
 use version;
-$Types::SQL::Util::VERSION = version->declare('v0.0.1');
+$Types::SQL::Util::VERSION = version->declare('v0.0.2');
 
 use Exporter qw/ import /;
 
@@ -107,10 +107,33 @@ sub column_info_from_type {
         return ( data_type => 'integer', is_numeric => 1 );
     }
 
+    if ($type->has_parent) {
+      my @info = eval { column_info_from_type( $type->parent ) };
+      return @info if @info;
+    }
 
-    die sprintf('Unsupported type: %s', ref $type);
-
+    die "Unsupported type: " . $type->display_name;
 }
+
+=head1 CUSTOM TYPES
+
+You can declare custom types from these types and still extract column
+information from them:
+
+  use Type::Library
+    -base,
+    -declare => qw/ CustomStr /;
+
+  use Type::Utils qw/ -all /;
+  use Types::SQL -types;
+  use Types::SQL::Util;
+
+  declare CustomStr, as Varchar [64];
+
+  ...
+
+  my $type = CustomStr;
+  my %info = column_info_from_type($type);
 
 =head1 SEE ALSO
 
