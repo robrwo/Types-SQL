@@ -4,7 +4,7 @@ use Test::Most;
 
 use if $ENV{AUTHOR_TESTING} || $ENV{RELEASE_TESTING}, 'Test::Warnings';
 
-use Types::SQL qw/ Varchar /;
+use Types::SQL -types;
 use Types::SQL::Util;
 use Types::Standard -types;
 
