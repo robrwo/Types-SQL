@@ -3,7 +3,7 @@ package Types::SQL;
 use strictures;
 
 use version;
-$Types::SQL::VERSION = version->declare('v0.0.1');
+$Types::SQL::VERSION = version->declare('v0.0.2');
 
 use Type::Library
   -base,

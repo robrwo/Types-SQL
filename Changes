@@ -1,6 +1,6 @@
-Revision history for {{$dist->name}}
+Revision history for Types-SQL
 
-{{$NEXT}}
+v0.0.2    2016-01-13 14:35:01+00:00 Europe/London
   [Enhancements]
   - Column information will be extracted from parent types when it is
     unavailable from the current type [GitHub #2].
