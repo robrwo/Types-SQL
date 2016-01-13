@@ -57,6 +57,9 @@ sub column_info_from_type {
         return ( data_type => 'integer', is_numeric => 1 );
     }
 
+
+    die sprintf('Unsupported type: %s', ref $type);
+
 }
 
 1;
