@@ -31,6 +31,17 @@ sub column_info_from_type {
         return $methods->{dbic_column_info}->($type);
     }
 
+    if ( $type->isa('Type::Tiny::Enum') ) {
+        return (
+            data_type  => 'enum',
+            is_enum    => 1,
+            is_numeric => 0,
+            extra      => {
+                list => $type->values,
+            },
+        );
+    }
+
     if ( $name eq 'Maybe' ) {
         return (
             is_nullable => 1,
