@@ -3,14 +3,14 @@ package Types::SQL;
 use strictures;
 
 use version;
-$Types::SQL::VERSION = version->declare('v0.0.2');
+$Types::SQL::VERSION = version->declare('v0.0.3');
 
 use Type::Library
   -base,
   -declare => qw/ Char Integer Numeric Serial Text Varchar /;
 
 use Ref::Util qw/ is_arrayref /;
-use Type::Utils -all;
+use Type::Utils 0.44 -all;
 use Types::Standard -types;
 use PerlX::Maybe;
 
