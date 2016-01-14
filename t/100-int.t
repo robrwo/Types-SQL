@@ -7,7 +7,7 @@ use if $ENV{AUTHOR_TESTING} || $ENV{RELEASE_TESTING}, 'Test::Warnings';
 use Types::SQL::Util;
 use Types::Standard -types;
 
-subtest 'str' => sub {
+subtest 'int' => sub {
 
     my $type = Int;
 
@@ -21,7 +21,7 @@ subtest 'str' => sub {
 
 };
 
-subtest 'maybe str' => sub {
+subtest 'maybe int' => sub {
 
     my $type = Maybe [Int];
 
