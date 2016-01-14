@@ -61,10 +61,21 @@ This is treated as an C<integer> without a precision.
 
 This is treated as a C<text> value without a size.
 
+=head3 C<InstanceOf>
+
+For L<DateTime>, L<Time::Moment> and L<Time::Piece> objects, this is
+treated as a C<datetime>.
+
 =cut
 
 our @EXPORT    = qw/ column_info_from_type /;
 our @EXPORT_OK = @EXPORT;
+
+my %CLASS_TYPES = (
+    'DateTime'     => 'datetime',
+    'Time::Moment' => 'datetime',
+    'Time::Piece'  => 'datetime',
+);
 
 sub column_info_from_type {
     my ($type) = @_;
@@ -99,6 +110,15 @@ sub column_info_from_type {
         );
     }
 
+    if (   $name eq 'Object'
+        && $type->display_name =~ /^InstanceOf\[['"](.+)['"]\]$/ )
+    {
+        if ( my $data_type = $CLASS_TYPES{$1} ) {
+            return ( data_type => $data_type );
+        }
+
+    }
+
     if ( $name eq 'Str' ) {
         return ( data_type => 'text', is_numeric => 0 );
     }
@@ -107,9 +127,9 @@ sub column_info_from_type {
         return ( data_type => 'integer', is_numeric => 1 );
     }
 
-    if ($type->has_parent) {
-      my @info = eval { column_info_from_type( $type->parent ) };
-      return @info if @info;
+    if ( $type->has_parent ) {
+        my @info = eval { column_info_from_type( $type->parent ) };
+        return @info if @info;
     }
 
     die "Unsupported type: " . $type->display_name;
