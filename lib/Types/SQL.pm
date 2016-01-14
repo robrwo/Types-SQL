@@ -10,7 +10,7 @@ use Type::Library
   -declare => qw/ Char Integer Numeric Serial Text Varchar /;
 
 use Ref::Util qw/ is_arrayref /;
-use Type::Utils -all;
+use Type::Utils 0.44 -all;
 use Types::Standard -types;
 use PerlX::Maybe;
 

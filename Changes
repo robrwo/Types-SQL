@@ -7,6 +7,8 @@ Revision history for Types-SQL
   [Bug Fixes]
   - Fixed testing module version prerequisites.
 
+  - Set minimum version of Type::Tiny to v0.44.
+
   [Other Changes]
   - Added more QA tests for developers.
 
