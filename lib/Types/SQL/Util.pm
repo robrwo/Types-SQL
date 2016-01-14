@@ -3,7 +3,7 @@ package Types::SQL::Util;
 use strictures;
 
 use version;
-$Types::SQL::Util::VERSION = version->declare('v0.0.2');
+$Types::SQL::Util::VERSION = version->declare('v0.0.3');
 
 use Exporter qw/ import /;
 
