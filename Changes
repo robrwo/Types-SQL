@@ -4,6 +4,9 @@ Revision history for Types-SQL
   [Enhancements]
   - Added support for datetime data types [GitHub #1].
 
+  [Bug Fixes]
+  - Fixed testing module version prerequisites.
+
   [Other Changes]
   - Added more QA tests for developers.
 
