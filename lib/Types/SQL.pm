@@ -1,6 +1,7 @@
 package Types::SQL;
 
-use strictures;
+use strict;
+use warnings;
 
 use version;
 $Types::SQL::VERSION = version->declare('v0.1.0');
