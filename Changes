@@ -1,6 +1,8 @@
 Revision history for Types-SQL
 
 {{$NEXT}}
+  [Documentation]
+  - Fixed typo.
 
 v0.0.3    2016-01-14 13:40:05+00:00 Europe/London
   [Enhancements]

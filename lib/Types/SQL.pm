@@ -237,7 +237,7 @@ sub _generate_type {
 
 =head1 CUSTOM TYPES
 
-Any type that has these types as a parent can have xolumn information
+Any type that has these types as a parent can have column information
 extracted using L<Types::SQL::Util>.
 
 Alternatively, you can specify a custom C<dbic_column_info> method in
