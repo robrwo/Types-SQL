@@ -4,6 +4,8 @@ Revision history for Types-SQL
   [Documentation]
   - Fixed typo.
 
+  - Bumped copyright year.
+
 v0.0.3    2016-01-14 13:40:05+00:00 Europe/London
   [Enhancements]
   - Added support for datetime data types [GitHub #1].
