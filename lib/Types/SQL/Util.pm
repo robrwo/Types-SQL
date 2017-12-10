@@ -1,6 +1,7 @@
 package Types::SQL::Util;
 
-use strictures;
+use strict;
+use warnings;
 
 use version;
 $Types::SQL::Util::VERSION = version->declare('v0.1.0');
@@ -165,7 +166,7 @@ Robert Rothenberg, C<rrwo@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2015 Robert Rothenberg.
+Copyright 2017 Robert Rothenberg.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a

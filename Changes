@@ -1,6 +1,15 @@
 Revision history for Types-SQL
 
 {{$NEXT}}
+  [Documentation]
+  - Fixed typo.
+
+  - Bumped copyright year.
+
+  [Other Changes]
+  - No longer requires strictures module.
+
+  - Ref::Uil::XS is recommended.
 
 v0.0.3    2016-01-14 13:40:05+00:00 Europe/London
   [Enhancements]
