@@ -16,6 +16,7 @@ use Types::Standard -types;
 use PerlX::Maybe;
 
 # RECOMMEND PREREQ: PerlX::Maybe::XS
+# RECOMMEND PREREQ: Ref::Util::XS
 # RECOMMEND PREREQ: Type::Tiny::XS
 
 =head1 NAME
