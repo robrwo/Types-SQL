@@ -7,6 +7,8 @@ Revision history for Types-SQL
   - Use Dist::Zilla to set module versions and update contributor
     metadata. This will also remove the dependency on version.
 
+  - Move strictures to make Perl::Critic happy.
+
 v0.1.0    2017-12-10 23:43:59+00:00 Europe/London
   [Documentation]
   - Fixed typo.

@@ -1,7 +1,7 @@
-package Types::SQL::Util;
-
 use strict;
 use warnings;
+
+package Types::SQL::Util;
 
 use Exporter qw/ import /;
 

@@ -1,7 +1,7 @@
-package Types::SQL;
-
 use strict;
 use warnings;
+
+package Types::SQL;
 
 use Type::Library
   -base,
