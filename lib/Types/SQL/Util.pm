@@ -1,11 +1,13 @@
+package Types::SQL::Util;
+
 use strict;
 use warnings;
-
-package Types::SQL::Util;
 
 use Exporter qw/ import /;
 
 use PerlX::Maybe;
+
+our $VERSION = 'v0.1.2';
 
 # RECOMMEND PREREQ: PerlX::Maybe::XS
 

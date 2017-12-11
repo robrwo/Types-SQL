@@ -1,7 +1,7 @@
+package Types::SQL;
+
 use strict;
 use warnings;
-
-package Types::SQL;
 
 use Type::Library
   -base,
@@ -15,6 +15,8 @@ use PerlX::Maybe;
 # RECOMMEND PREREQ: PerlX::Maybe::XS
 # RECOMMEND PREREQ: Ref::Util::XS
 # RECOMMEND PREREQ: Type::Tiny::XS
+
+our $VERSION = 'v0.1.2';
 
 =head1 NAME
 
