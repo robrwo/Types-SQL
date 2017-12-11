@@ -1,6 +1,9 @@
 Revision history for Types-SQL
 
 {{$NEXT}}
+  [Enhancements]
+  - Types::SQL::Util translates a Bool into a boolean.
+
 
 v0.1.2    2017-12-11 23:04:53+00:00 Europe/London
   [Other Changes]

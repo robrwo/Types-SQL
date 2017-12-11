@@ -127,6 +127,10 @@ sub column_info_from_type {
         return ( data_type => 'integer', is_numeric => 1 );
     }
 
+    if ( $name eq 'Bool' ) {
+        return ( data_type => 'boolean', is_numeric => 0 );
+    }
+
     if ( $type->has_parent ) {
         my @info = eval { column_info_from_type( $type->parent ) };
         return @info if @info;
