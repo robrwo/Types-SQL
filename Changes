@@ -1,6 +1,8 @@
 Revision history for Types-SQL
 
 {{$NEXT}}
+
+0.1.1     2017-12-11 18:05:03+00:00 Europe/London
   [Other Changes]
   - Include more metadata in META.yml
 
