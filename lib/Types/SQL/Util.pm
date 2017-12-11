@@ -3,9 +3,6 @@ package Types::SQL::Util;
 use strict;
 use warnings;
 
-use version;
-$Types::SQL::Util::VERSION = version->declare('v0.1.0');
-
 use Exporter qw/ import /;
 
 use PerlX::Maybe;

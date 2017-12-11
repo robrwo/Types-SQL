@@ -3,9 +3,6 @@ package Types::SQL;
 use strict;
 use warnings;
 
-use version;
-$Types::SQL::VERSION = version->declare('v0.1.0');
-
 use Type::Library
   -base,
   -declare => qw/ Char Integer Numeric Serial Text Varchar /;
