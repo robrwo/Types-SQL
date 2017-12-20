@@ -18,7 +18,7 @@ use PerlX::Maybe;
 
 # ABSTRACT: a library of SQL types
 
-our $VERSION = 'v0.1.3';
+our $VERSION = 'v0.1.4';
 
 =head1 SYNOPSIS
 
