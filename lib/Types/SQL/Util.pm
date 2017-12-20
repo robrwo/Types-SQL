@@ -42,6 +42,10 @@ type.
 Besides the types from L<Types::SQL>, it also supports the following
 types from L<Types::Standard>:
 
+=head2 C<Bool>
+
+This is trated as a C<boolean> type.
+
 =head3 C<Enum>
 
 This is treated as an C<enum> type, which can be used with
