@@ -42,27 +42,27 @@ type.
 Besides the types from L<Types::SQL>, it also supports the following
 types from L<Types::Standard>:
 
-=head3 C<Maybe>
-
-This treats the type in the parameter as nullable.
-
 =head3 C<Enum>
 
 This is treated as an C<enum> type, which can be used with
 L<DBIx::Class::InflateColumn::Object::Enum>.
 
-=head3 C<Int>
-
-This is treated as an C<integer> without a precision.
-
-=head3 C<Str>
-
-This is treated as a C<text> value without a size.
-
 =head3 C<InstanceOf>
 
 For L<DateTime>, L<Time::Moment> and L<Time::Piece> objects, this is
 treated as a C<datetime>.
+
+=head3 C<Int>
+
+This is treated as an C<integer> without a precision.
+
+=head3 C<Maybe>
+
+This treats the type in the parameter as nullable.
+
+=head3 C<Str>
+
+This is treated as a C<text> value without a size.
 
 =cut
 
