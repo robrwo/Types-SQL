@@ -130,7 +130,7 @@ sub column_info_from_type {
     }
 
     if ( $name eq 'Bool' ) {
-        return ( data_type => 'boolean', is_numeric => 0 );
+        return ( data_type => 'boolean' );
     }
 
     if ( $type->has_parent ) {

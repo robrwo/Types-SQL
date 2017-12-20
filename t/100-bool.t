@@ -15,7 +15,7 @@ subtest 'bool' => sub {
 
     my %info = column_info_from_type($type);
 
-    is_deeply \%info => { data_type => 'boolean', is_numeric => 0, },
+    is_deeply \%info => { data_type => 'boolean' },
       'column_info'
       or note( explain \%info );
 
@@ -31,7 +31,6 @@ subtest 'maybe bool' => sub {
 
     is_deeply \%info => {
         data_type   => 'boolean',
-        is_numeric  => 0,
         is_nullable => 1,
       },
       'column_info'
