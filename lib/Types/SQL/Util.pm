@@ -137,6 +137,18 @@ sub column_info_from_type {
         );
     }
 
+    if ( $name eq 'Num' ) {
+        return ( data_type => 'numeric', is_numeric => 1 );
+    }
+
+    if ( $name eq 'PositiveOrZeroNum' ) {
+        return (
+            data_type  => 'numeric',
+            is_numeric => 1,
+            extra      => { unsigned => 1 }
+        );
+    }
+
     if ( $name eq 'Bool' ) {
         return ( data_type => 'boolean' );
     }

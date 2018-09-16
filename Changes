@@ -2,8 +2,10 @@ Revision history for Types-SQL
 
 {{$NEXT}}
   [Enhancements]
-  - Types::SQL::Util translates a PositiveOrZeroInt into an unsigned
-    integer.
+  - Types::SQL::Util translates the following types:
+     * PositiveOrZeroInt
+     * Num
+     * PositiveOrZeroNum
 
 v0.1.3    2017-12-20 12:53:52+00:00 Europe/London
   [Enhancements]
