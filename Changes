@@ -9,6 +9,9 @@ Revision history for Types-SQL
      * InstanceOf['DateTime::Tiny']
      * ArrayRef
 
+  [Documentation]
+  - Corrected typos.
+
 v0.1.3    2017-12-20 12:53:52+00:00 Europe/London
   [Enhancements]
   - Types::SQL::Util translates a Bool into a boolean.

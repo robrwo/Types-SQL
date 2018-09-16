@@ -44,7 +44,7 @@ types from L<Types::Standard>:
 
 =head2 C<Bool>
 
-This is trated as a C<boolean> type.
+This is treated as a C<boolean> type.
 
 =head3 C<Enum>
 
