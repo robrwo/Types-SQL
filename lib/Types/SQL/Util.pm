@@ -129,6 +129,14 @@ sub column_info_from_type {
         return ( data_type => 'integer', is_numeric => 1 );
     }
 
+    if ( $name eq 'PositiveOrZeroInt' ) {
+        return (
+            data_type  => 'integer',
+            is_numeric => 1,
+            extra      => { unsigned => 1 }
+        );
+    }
+
     if ( $name eq 'Bool' ) {
         return ( data_type => 'boolean' );
     }
