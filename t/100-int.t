@@ -55,4 +55,21 @@ subtest 'maybe int' => sub {
 
 };
 
+subtest 'int[]' => sub {
+
+    my $type = ArrayRef [Int];
+
+    isa_ok $type => 'Type::Tiny';
+
+    my %info = column_info_from_type($type);
+
+    is_deeply \%info => {
+        data_type   => 'integer[]',
+        is_numeric  => 1,
+      },
+      'column_info'
+      or note( explain \%info );
+
+};
+
 done_testing;
