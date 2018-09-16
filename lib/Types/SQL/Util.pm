@@ -113,6 +113,12 @@ sub column_info_from_type {
         );
     }
 
+    if ( $name eq 'ArrayRef' ) {
+        my %type = column_info_from_type( $type->type_parameter );
+        $type{data_type} .= '[]';
+        return %type;
+    }
+
     if (   $name eq 'Object'
         && $type->display_name =~ /^InstanceOf\[['"](.+)['"]\]$/ )
     {
