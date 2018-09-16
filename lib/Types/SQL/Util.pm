@@ -42,7 +42,7 @@ type.
 Besides the types from L<Types::SQL>, it also supports the following
 types from L<Types::Standard>:
 
-=head2 C<Bool>
+=head3 C<Bool>
 
 This is treated as a C<boolean> type.
 
