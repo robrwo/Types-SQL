@@ -53,8 +53,8 @@ L<DBIx::Class::InflateColumn::Object::Enum>.
 
 =head3 C<InstanceOf>
 
-For L<DateTime>, L<Time::Moment> and L<Time::Piece> objects, this is
-treated as a C<datetime>.
+For L<DateTime>, L<DateTime::Tiny>, L<Time::Moment> and L<Time::Piece>
+objects, this is treated as a C<datetime>.
 
 =head3 C<Int>
 
@@ -74,9 +74,10 @@ our @EXPORT    = qw/ column_info_from_type /;
 our @EXPORT_OK = @EXPORT;
 
 my %CLASS_TYPES = (
-    'DateTime'     => 'datetime',
-    'Time::Moment' => 'datetime',
-    'Time::Piece'  => 'datetime',
+    'DateTime'       => 'datetime',
+    'DateTime::Tiny' => 'datetime',
+    'Time::Moment'   => 'datetime',
+    'Time::Piece'    => 'datetime',
 );
 
 sub column_info_from_type {
