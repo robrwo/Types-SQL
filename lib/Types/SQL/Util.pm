@@ -40,7 +40,11 @@ C<add_column> method of L<DBIx::Class::ResultSource>, based on the
 type.
 
 Besides the types from L<Types::SQL>, it also supports the following
-types from L<Types::Standard>:
+types from L<Types::Standard> and C<Types::Common::Numeric>:
+
+=head3 C<ArrayRef>
+
+This treats the type as an array.
 
 =head3 C<Bool>
 
@@ -63,6 +67,18 @@ This is treated as an C<integer> without a precision.
 =head3 C<Maybe>
 
 This treats the type in the parameter as nullable.
+
+=head3 C<Num>
+
+This is treated as a C<numeric> without a precision.
+
+=head3 C<PositiveOrZeroInt>
+
+This is treated as an C<unsigned integer> without a precision.
+
+=head3 C<PositiveOrZeroNum>
+
+This is treated as an C<unsigned numeric> without a precision.
 
 =head3 C<Str>
 
