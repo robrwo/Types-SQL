@@ -7,7 +7,7 @@ use Exporter qw/ import /;
 
 use PerlX::Maybe;
 
-our $VERSION = 'v0.2.1';
+our $VERSION = 'v0.2.2';
 
 # RECOMMEND PREREQ: PerlX::Maybe::XS
 
