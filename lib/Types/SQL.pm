@@ -1,5 +1,7 @@
 package Types::SQL;
 
+use v5.8;
+
 use strict;
 use warnings;
 
@@ -21,6 +23,16 @@ use namespace::autoclean;
 # ABSTRACT: a library of SQL types
 
 our $VERSION = 'v0.2.1';
+
+=for Pod::Coverage VERSION
+
+=cut
+
+sub VERSION { # for older Perls
+    my ( $class, $wanted ) = @_;
+    require version;
+    return version->parse($VERSION);
+}
 
 =head1 SYNOPSIS
 
