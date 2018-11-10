@@ -12,6 +12,8 @@ use Type::Utils 0.44 -all;
 use Types::Standard -types;
 use PerlX::Maybe;
 
+use namespace::autoclean;
+
 # RECOMMEND PREREQ: PerlX::Maybe::XS
 # RECOMMEND PREREQ: Ref::Util::XS
 # RECOMMEND PREREQ: Type::Tiny::XS

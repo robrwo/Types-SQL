@@ -1,6 +1,9 @@
 Revision history for Types-SQL
 
 {{$NEXT}}
+  [Bug Fixes]
+  - Clean namespaces.
+
   [Documentation]
   - Added INSTALL file to the distribution.
 
