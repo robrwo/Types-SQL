@@ -20,6 +20,9 @@ Revision history for {{ $dist->name }}
      * UpperCaseSimpleStr
      * UpperCaseStr
 
+  [Documentation]
+  - Added a ROADMAP section to POD about planned changes.
+
   [Bug Fixes]
   - column_info_from_type checks that the type isa Type::Tiny object.
 

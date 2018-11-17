@@ -110,6 +110,11 @@ my $type = Type::Tiny->new(
 The method should return a hash of values that are passed to the
 `add_column` method of [DBIx::Class::ResultSource](https://metacpan.org/pod/DBIx::Class::ResultSource).
 
+# ROADMAP
+
+Support for Perl versions earlier than 5.10 will be removed sometime
+in 2019.
+
 # SEE ALSO
 
 [Type::Tiny](https://metacpan.org/pod/Type::Tiny).
