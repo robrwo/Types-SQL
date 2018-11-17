@@ -1,4 +1,4 @@
-Revision history for Types-SQL
+Revision history for {{ $dist->name }}
 
 {{$NEXT}}
   [Bug Fixes]
