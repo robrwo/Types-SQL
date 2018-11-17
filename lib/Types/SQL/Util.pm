@@ -118,6 +118,139 @@ my %CLASS_TYPES = (
     'Time::Piece'    => 'datetime',
 );
 
+
+my %FROM_PARENT = (
+
+    'Types::Standard' => {
+
+        'ArrayRef' => sub {
+            my %type = column_info_from_type( $_[0]->type_parameter );
+            $type{data_type} .= '[]';
+            return %type;
+        },
+
+        'Maybe' => sub {
+            return (
+                is_nullable => 1,
+                column_info_from_type( $_[0]->type_parameter )
+            );
+        },
+
+        'Object' => sub {
+            my $class = $_[0]->$_call_if_can('class') or return;
+            if ( my $data_type = $CLASS_TYPES{$class} ) {
+                return ( data_type => $data_type );
+            }
+            return;
+        },
+
+      }
+
+);
+
+my %FROM_TYPE = (
+
+    'Types::Standard' => {
+
+        'Bool' => sub {
+            return ( data_type => 'boolean' );
+        },
+
+        'Int' => sub {
+            return ( data_type => 'integer', is_numeric => 1 );
+        },
+
+        'Num' => sub {
+            return ( data_type => 'numeric', is_numeric => 1 );
+        },
+
+
+        'Str' => sub {
+            return ( data_type => 'text', is_numeric => 0 );
+        },
+
+    },
+
+    'Types::Common::Numeric' => {
+
+        'PositiveInt' => sub {
+            return (
+                data_type  => 'integer',
+                is_numeric => 1,
+                extra      => { unsigned => 1 }
+                );
+        },
+
+        'PositiveOrZeroInt' => sub {
+            return (
+                data_type  => 'integer',
+                is_numeric => 1,
+                extra      => { unsigned => 1 }
+                );
+        },
+
+        'PositiveNum' => sub {
+            return (
+                data_type  => 'numeric',
+                is_numeric => 1,
+                extra      => { unsigned => 1 }
+                );
+        },
+
+        'PositiveOrZeroNum' => sub {
+            return (
+                data_type  => 'numeric',
+                is_numeric => 1,
+                extra      => { unsigned => 1 }
+                );
+        },
+
+        'SingleDigit' => sub {
+            return (
+                data_type  => 'integer',
+                is_numeric => 1,
+                size       => 1,
+                extra      => { unsigned => 1 }
+            );
+        },
+
+      },
+
+    'Types::Common::String' => {
+
+        'LowerCaseStr' => sub {
+            return ( data_type => 'text', is_numeric => 0 );
+        },
+
+        'UpperCaseStr' => sub {
+            return ( data_type => 'text', is_numeric => 0 );
+        },
+
+        'NonEmptyStr' => sub {
+            return ( data_type => 'text', is_numeric => 0 );
+        },
+
+        'LowerCaseSimpleStr' => sub {
+            return ( data_type => 'text', is_numeric => 0, size => 255 );
+        },
+
+        'UpperCaseSimpleStr' => sub {
+            return ( data_type => 'text', is_numeric => 0, size => 255 );
+        },
+
+        'NonEmptySimpleStr' => sub {
+            return ( data_type => 'text', is_numeric => 0, size => 255 );
+        },
+
+        'SimpleStr' => sub {
+            return ( data_type => 'text', is_numeric => 0, size => 255 );
+        },
+
+    },
+
+);
+
+
 sub column_info_from_type {
     my ($type) = @_;
 
@@ -147,90 +280,18 @@ sub column_info_from_type {
         );
     }
 
-    if (   $name eq 'Maybe'
-        && $parent->$_call_if_can('library') eq 'Types::Standard' )
-    {
-        return (
-            is_nullable => 1,
-            column_info_from_type( $type->type_parameter )
-        );
-    }
-
-    if (   $name eq 'ArrayRef'
-        && $parent->$_call_if_can('library') eq 'Types::Standard' )
-    {
-        my %type = column_info_from_type( $type->type_parameter );
-        $type{data_type} .= '[]';
-        return %type;
-    }
-
-    if (   $name eq 'Object'
-        && $parent->$_call_if_can('library') eq 'Types::Standard'
-        && $type->display_name =~ /^InstanceOf\[['"](.+)['"]\]$/ )
-    {
-        if ( my $data_type = $CLASS_TYPES{$1} ) {
-            return ( data_type => $data_type );
+    if ( my $parent_lib = $parent->$_call_if_can('library') ) {
+        if ( my $code = $FROM_PARENT{$parent_lib}{$name} ) {
+            if ( my %info = $code->($type) ) {
+                return %info;
+            }
         }
-
     }
 
-    if ( $name eq 'Str'
-         && $type->library eq 'Types::Standard' ) {
-        return ( data_type => 'text', is_numeric => 0 );
-    }
-
-    if ( $name =~ /^(?:NonEmpty|LowerCase|UpperCase)?Str$/
-         && $type->library eq 'Types::Common::String' ) {
-        return ( data_type => 'text', is_numeric => 0 );
-    }
-
-    if ( $name =~ /^(?:NonEmpty|LowerCase|UpperCase)?SimpleStr$/
-         && $type->library eq 'Types::Common::String' ) {
-        return ( data_type => 'text', is_numeric => 0, size => 255 );
-    }
-
-    if ( $name eq 'Int'
-        && $type->library eq 'Types::Standard' ) {
-        return ( data_type => 'integer', is_numeric => 1 );
-    }
-
-    if (   $name eq 'SingleDigit'
-        && $type->library eq 'Types::Common::Numeric' )
-    {
-        return (
-            data_type  => 'integer',
-            is_numeric => 1,
-            size       => 1,
-            extra      => { unsigned => 1 }
-        );
-    }
-
-    if ( $name eq 'PositiveOrZeroInt'
-         && $type->library eq 'Types::Common::Numeric' ) {
-        return (
-            data_type  => 'integer',
-            is_numeric => 1,
-            extra      => { unsigned => 1 }
-        );
-    }
-
-    if ( $name eq 'Num'
-         && $type->library eq 'Types::Standard' ) {
-        return ( data_type => 'numeric', is_numeric => 1 );
-    }
-
-    if ( $name eq 'PositiveOrZeroNum'
-         && $type->library eq 'Types::Common::Numeric' ) {
-        return (
-            data_type  => 'numeric',
-            is_numeric => 1,
-            extra      => { unsigned => 1 }
-        );
-    }
-
-    if ( $name eq 'Bool'
-         && $type->library eq 'Types::Standard' ) {
-        return ( data_type => 'boolean' );
+    if ( my $code = $FROM_TYPE{ $type->library }{$name} ) {
+        if ( my %info = $code->($type) ) {
+            return %info;
+        }
     }
 
     if ( $parent ) {

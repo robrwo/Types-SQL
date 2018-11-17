@@ -2,12 +2,19 @@ Revision history for {{ $dist->name }}
 
 {{$NEXT}}
   [Enhancements]
-  - column_info_from_type checks type library names.
-  - Types::SQL::Util translates the following types:
+  - Types::SQL::Util checks type library names.
+
+  - Types::SQL::Util uses a lookup table for improved performance, and to make supporting
+    additional type libraries easier.
+
+  - Types::SQL::Util translates the following types from Types::Common::Numeric
+    and Types::Common::String:
      * LowerCaseSimpleStr
      * LowerCaseStr
      * NonEmptySimpleStr
      * NonEmptyStr
+     * PositiveInt
+     * PositiveNum
      * SimpleStr
      * SingleDigit
      * UpperCaseSimpleStr
