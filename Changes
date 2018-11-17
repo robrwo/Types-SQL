@@ -3,6 +3,14 @@ Revision history for {{ $dist->name }}
 {{$NEXT}}
   [Enhancements]
   - column_info_from_type checks type library names.
+  - Types::SQL::Util translates the following types:
+     * LowerCaseSimpleStr
+     * LowerCaseStr
+     * NonEmptySimpleStr
+     * NonEmptyStr
+     * SimpleStr
+     * UpperCaseSimpleStr
+     * UpperCaseStr
 
   [Bug Fixes]
   - column_info_from_type checks that the type isa Type::Tiny object.

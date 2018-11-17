@@ -41,7 +41,8 @@ C<add_column> method of L<DBIx::Class::ResultSource>, based on the
 type.
 
 Besides the types from L<Types::SQL>, it also supports the following
-types from L<Types::Standard> and C<Types::Common::Numeric>:
+types from L<Types::Standard>, L<Types::Common::String>, and
+L<Types::Common::Numeric>:
 
 =head3 C<ArrayRef>
 
@@ -83,7 +84,23 @@ This is treated as an C<unsigned numeric> without a precision.
 
 =head3 C<Str>
 
-This is treated as a C<text> value without a size.
+=head3 C<NonEmptyStr>
+
+=head3 C<LowerCaseStr>
+
+=head3 C<UpperCaseStr>
+
+These are treated as a C<text> value without a size.
+
+=head3 C<SimpleStr>
+
+=head3 C<NonEmptySimpleStr>
+
+=head3 C<LowerCaseSimpleStr>
+
+=head3 C<UpperCaseSimpleStr>
+
+These is trated as a C<text> value with a size of 255.
 
 =cut
 
@@ -156,6 +173,16 @@ sub column_info_from_type {
     if ( $name eq 'Str'
          && $type->library eq 'Types::Standard' ) {
         return ( data_type => 'text', is_numeric => 0 );
+    }
+
+    if ( $name =~ /^(?:NonEmpty|LowerCase|UpperCase)?Str$/
+         && $type->library eq 'Types::Common::String' ) {
+        return ( data_type => 'text', is_numeric => 0 );
+    }
+
+    if ( $name =~ /^(?:NonEmpty|LowerCase|UpperCase)?SimpleStr$/
+         && $type->library eq 'Types::Common::String' ) {
+        return ( data_type => 'text', is_numeric => 0, size => 255 );
     }
 
     if ( $name eq 'Int'
