@@ -9,6 +9,7 @@ Revision history for {{ $dist->name }}
      * NonEmptySimpleStr
      * NonEmptyStr
      * SimpleStr
+     * SingleDigit
      * UpperCaseSimpleStr
      * UpperCaseStr
 

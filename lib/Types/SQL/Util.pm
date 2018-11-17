@@ -82,6 +82,10 @@ This is treated as an C<unsigned integer> without a precision.
 
 This is treated as an C<unsigned numeric> without a precision.
 
+=head3 C<SingleDigit>
+
+This is treated as an C<unsigned integer> of size 1.
+
 =head3 C<Str>
 
 =head3 C<NonEmptyStr>
@@ -188,6 +192,17 @@ sub column_info_from_type {
     if ( $name eq 'Int'
         && $type->library eq 'Types::Standard' ) {
         return ( data_type => 'integer', is_numeric => 1 );
+    }
+
+    if (   $name eq 'SingleDigit'
+        && $type->library eq 'Types::Common::Numeric' )
+    {
+        return (
+            data_type  => 'integer',
+            is_numeric => 1,
+            size       => 1,
+            extra      => { unsigned => 1 }
+        );
     }
 
     if ( $name eq 'PositiveOrZeroInt'
