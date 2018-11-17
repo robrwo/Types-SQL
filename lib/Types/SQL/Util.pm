@@ -6,7 +6,7 @@ use warnings;
 use Exporter qw/ import /;
 
 use PerlX::Maybe;
-use Safe::Isa qw/ $_isa /;
+use Safe::Isa qw/ $_isa $_call_if_can /;
 
 our $VERSION = 'v0.2.2';
 
@@ -104,10 +104,11 @@ sub column_info_from_type {
 
     my $name    = $type->name;
     my $methods = $type->my_methods;
+    my $parent  = $type->has_parent ? $type->parent : undef;
 
-    if ( $type->is_anon && $type->has_parent ) {
-        $name    = $type->parent->name;
-        $methods = $type->parent->my_methods;
+    if ( $type->is_anon && $parent ) {
+        $name    = $parent->name;
+        $methods = $parent->my_methods;
     }
 
     if ( $methods && $methods->{dbic_column_info} ) {
@@ -125,20 +126,25 @@ sub column_info_from_type {
         );
     }
 
-    if ( $name eq 'Maybe' ) {
+    if (   $name eq 'Maybe'
+        && $parent->$_call_if_can('library') eq 'Types::Standard' )
+    {
         return (
             is_nullable => 1,
             column_info_from_type( $type->type_parameter )
         );
     }
 
-    if ( $name eq 'ArrayRef' ) {
+    if (   $name eq 'ArrayRef'
+        && $parent->$_call_if_can('library') eq 'Types::Standard' )
+    {
         my %type = column_info_from_type( $type->type_parameter );
         $type{data_type} .= '[]';
         return %type;
     }
 
     if (   $name eq 'Object'
+        && $parent->$_call_if_can('library') eq 'Types::Standard'
         && $type->display_name =~ /^InstanceOf\[['"](.+)['"]\]$/ )
     {
         if ( my $data_type = $CLASS_TYPES{$1} ) {
@@ -147,15 +153,18 @@ sub column_info_from_type {
 
     }
 
-    if ( $name eq 'Str' ) {
+    if ( $name eq 'Str'
+         && $type->library eq 'Types::Standard' ) {
         return ( data_type => 'text', is_numeric => 0 );
     }
 
-    if ( $name eq 'Int' ) {
+    if ( $name eq 'Int'
+        && $type->library eq 'Types::Standard' ) {
         return ( data_type => 'integer', is_numeric => 1 );
     }
 
-    if ( $name eq 'PositiveOrZeroInt' ) {
+    if ( $name eq 'PositiveOrZeroInt'
+         && $type->library eq 'Types::Common::Numeric' ) {
         return (
             data_type  => 'integer',
             is_numeric => 1,
@@ -163,11 +172,13 @@ sub column_info_from_type {
         );
     }
 
-    if ( $name eq 'Num' ) {
+    if ( $name eq 'Num'
+         && $type->library eq 'Types::Standard' ) {
         return ( data_type => 'numeric', is_numeric => 1 );
     }
 
-    if ( $name eq 'PositiveOrZeroNum' ) {
+    if ( $name eq 'PositiveOrZeroNum'
+         && $type->library eq 'Types::Common::Numeric' ) {
         return (
             data_type  => 'numeric',
             is_numeric => 1,
@@ -175,12 +186,13 @@ sub column_info_from_type {
         );
     }
 
-    if ( $name eq 'Bool' ) {
+    if ( $name eq 'Bool'
+         && $type->library eq 'Types::Standard' ) {
         return ( data_type => 'boolean' );
     }
 
-    if ( $type->has_parent ) {
-        my @info = eval { column_info_from_type( $type->parent ) };
+    if ( $parent ) {
+        my @info = eval { column_info_from_type( $parent ) };
         return @info if @info;
     }
 

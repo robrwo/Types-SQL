@@ -1,6 +1,9 @@
 Revision history for {{ $dist->name }}
 
 {{$NEXT}}
+  [Enhancements]
+  - column_info_from_type checks type library names.
+
   [Bug Fixes]
   - column_info_from_type checks that the type isa Type::Tiny object.
 
