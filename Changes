@@ -1,6 +1,8 @@
 Revision history for Types-SQL
 
 {{$NEXT}}
+  [Bug Fixes]
+  - column_info_from_type checks that the type isa Type::Tiny object.
 
 v0.2.1    2018-11-10 22:17:54+00:00 Europe/London
   [Bug Fixes]

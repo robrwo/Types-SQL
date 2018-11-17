@@ -6,6 +6,7 @@ use warnings;
 use Exporter qw/ import /;
 
 use PerlX::Maybe;
+use Safe::Isa qw/ $_isa /;
 
 our $VERSION = 'v0.2.2';
 
@@ -98,6 +99,8 @@ my %CLASS_TYPES = (
 
 sub column_info_from_type {
     my ($type) = @_;
+
+    return { } unless $type->$_isa('Type::Tiny');
 
     my $name    = $type->name;
     my $methods = $type->my_methods;
