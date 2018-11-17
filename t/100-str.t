@@ -33,6 +33,19 @@ foreach my $type ( Str, NonEmptyStr, LowerCaseStr, UpperCaseStr ) {
 
     };
 
+    my $array = ArrayRef[$type];
+
+    subtest $array->display_name => sub {
+
+        my %info = column_info_from_type($array);
+
+        is_deeply \%info =>
+          { data_type => 'text[]', is_numeric => 0 },
+          'column_info'
+          or note( explain \%info );
+
+    };
+
 }
 
 foreach my $type ( SimpleStr, NonEmptySimpleStr, LowerCaseSimpleStr,
