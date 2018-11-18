@@ -141,6 +141,10 @@ feature.
 
 Robert Rothenberg <rrwo@cpan.org>
 
+# CONTRIBUTOR
+
+Slaven Rezić <slaven@rezic.de>
+
 # COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2016-2018 by Robert Rothenberg.

@@ -5,6 +5,9 @@ Revision history for {{ $dist->name }}
   - InstanceOf['JSON::PP::Boolean', 'Types::Serialiser::Boolean'] can be
     translated.
 
+  [Bug Fixes]
+  - Specify minimum version of Safe::Isa (Slaven Rezić).
+
   [Toolchain]
   - Clean up prereqs list.
 
