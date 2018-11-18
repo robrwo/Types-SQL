@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{$NEXT}}
+  [Documentation]
+  - Updated Changes to refer to GitHub issues.
 
 v0.3.1    2018-11-18 11:46:52+00:00 Europe/London
   [Enhancements]
@@ -8,7 +10,7 @@ v0.3.1    2018-11-18 11:46:52+00:00 Europe/London
     translated.
 
   [Bug Fixes]
-  - Specify minimum version of Safe::Isa (Slaven Rezić).
+  - Specify minimum version of Safe::Isa, #4 (Slaven Rezić).
 
   [Toolchain]
   - Clean up prereqs list.
