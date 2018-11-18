@@ -1,6 +1,9 @@
 Revision history for {{ $dist->name }}
 
 {{$NEXT}}
+  [Enhancements]
+  - InstanceOf['JSON::PP::Boolean', 'Types::Serialiser::Boolean'] can be
+    translated.
 
 v0.3.0    2018-11-17 22:13:33+00:00 Europe/London
   [Enhancements]

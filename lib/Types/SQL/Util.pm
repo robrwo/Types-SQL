@@ -112,10 +112,12 @@ our @EXPORT    = qw/ column_info_from_type /;
 our @EXPORT_OK = @EXPORT;
 
 my %CLASS_TYPES = (
-    'DateTime'       => 'datetime',
-    'DateTime::Tiny' => 'datetime',
-    'Time::Moment'   => 'datetime',
-    'Time::Piece'    => 'datetime',
+    'DateTime'                   => 'datetime',
+    'DateTime::Tiny'             => 'datetime',
+    'JSON::PP::Boolean'          => 'boolean',
+    'Time::Moment'               => 'datetime',
+    'Time::Piece'                => 'datetime',
+    'Types::Serialiser::Boolean' => 'boolean',
 );
 
 
