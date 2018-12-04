@@ -65,6 +65,14 @@ my $type = Integer[ $precision ];
 
 Returns a `integer` data type, with an optional precision parameter.
 
+## `SmallInt`
+
+This is shorthand for `Integer[5]`.
+
+## `BigInt`
+
+This is shorthand for `Integer[19]`.
+
 ## `Serial`
 
 ```perl
