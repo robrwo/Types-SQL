@@ -1,6 +1,9 @@
 Revision history for {{ $dist->name }}
 
 {{$NEXT}}
+  [Enhancements]
+  - Added SmallInt, BigInt.
+
   [Documentation]
   - Updated Changes to refer to GitHub issues.
 

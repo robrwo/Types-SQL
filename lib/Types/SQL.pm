@@ -7,7 +7,7 @@ use warnings;
 
 use Type::Library
   -base,
-  -declare => qw/ Char Integer Numeric Serial Text Varchar /;
+  -declare => qw/ BigInt Char Integer Numeric Serial SmallInt Text Varchar /;
 
 use Ref::Util qw/ is_arrayref /;
 use Type::Utils 0.44 -all;
@@ -160,6 +160,19 @@ our $Integer = _generate_type(
         );
     },
 );
+
+=head2 C<SmallInt>
+
+This is shorthand for C<Integer[5]>.
+
+=head2 C<BigInt>
+
+This is shorthand for C<Integer[19]>.
+
+=cut
+
+declare SmallInt, as Integer[5];
+declare BigInt, as Integer[19];
 
 =head2 C<Serial>
 
