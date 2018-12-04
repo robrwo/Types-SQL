@@ -22,7 +22,7 @@ use namespace::autoclean;
 
 # ABSTRACT: a library of SQL types
 
-our $VERSION = 'v0.3.2';
+our $VERSION = 'v0.4.0';
 
 =for Pod::Coverage VERSION
 
