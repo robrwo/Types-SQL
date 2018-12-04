@@ -5,7 +5,7 @@ use warnings;
 
 use Exporter qw/ import /;
 
-use PerlX::Maybe;
+use PerlX::Maybe qw/ maybe /;
 use Safe::Isa 1.000008 qw/ $_isa $_call_if_can /;
 
 our $VERSION = 'v0.4.0';

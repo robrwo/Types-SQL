@@ -14,6 +14,9 @@ Revision history for {{ $dist->name }}
   [Tests]
   - Cleaned up test prereqs.
 
+  [Other]
+  - Minor code improvements.
+
 v0.3.1    2018-11-18 11:46:52+00:00 Europe/London
   [Enhancements]
   - InstanceOf['JSON::PP::Boolean', 'Types::Serialiser::Boolean'] can be
