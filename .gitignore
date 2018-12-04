@@ -1,2 +1,4 @@
 \.build/
 Types-SQL-*
+local/
+cpanfile.snapshot
