@@ -1,6 +1,6 @@
 package Types::SQL;
 
-use v5.8;
+use v5.10;
 
 use strict;
 use warnings;
@@ -22,17 +22,7 @@ use namespace::autoclean;
 
 # ABSTRACT: a library of SQL types
 
-our $VERSION = 'v0.4.2';
-
-=for Pod::Coverage VERSION
-
-=cut
-
-sub VERSION { # for older Perls
-    my ( $class, $wanted ) = @_;
-    require version;
-    return version->parse($VERSION);
-}
+our $VERSION = 'v0.5.0';
 
 =head1 SYNOPSIS
 
@@ -291,12 +281,6 @@ The method should return a hash of values that are passed to the
 C<add_column> method of L<DBIx::Class::ResultSource>.
 
 =for readme continue
-
-=head1 ROADMAP
-
-Support for Perl versions earlier than 5.10 will be removed sometime
-in 2019.
-
 =head1 SEE ALSO
 
 L<Type::Tiny>.
