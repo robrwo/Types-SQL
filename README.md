@@ -57,6 +57,8 @@ my $type = Char[ $size ];
 
 Returns a `char` data type, with an optional size parameter.
 
+If `$size` is omitted, then it will default to 1.
+
 ## `Integer`
 
 ```perl

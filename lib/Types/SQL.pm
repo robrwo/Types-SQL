@@ -122,6 +122,8 @@ our $Varchar = _generate_type(
 
 Returns a C<char> data type, with an optional size parameter.
 
+If C<$size> is omitted, then it will default to 1.
+
 =cut
 
 our $Char = _generate_type(
@@ -132,9 +134,9 @@ our $Char = _generate_type(
         my ( $self, $size ) = @_;
         my $parent = $self->parent->my_methods->{dbic_column_info};
         return (
-            $parent->( $self->parent, $size || $self->type_parameter ),
+            $parent->( $self->parent, $size || $self->type_parameter || 1 ),
             data_type => 'char',
-            maybe size => $size || $self->type_parameter,
+            size      => $size || $self->type_parameter || 1,
         );
     },
 );
