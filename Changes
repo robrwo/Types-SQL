@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{$NEXT}}
+
+v0.5.0    2022-04-21 17:13:34+01:00 Europe/London
   [Incompatibilies]
   - Support for Perls before v5.10 has been removed.
 

@@ -22,7 +22,7 @@ use namespace::autoclean;
 
 # ABSTRACT: a library of SQL types
 
-our $VERSION = 'v0.5.0';
+our $VERSION = 'v0.5.1';
 
 =head1 SYNOPSIS
 
