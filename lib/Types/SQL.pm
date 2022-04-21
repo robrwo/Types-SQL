@@ -99,9 +99,9 @@ our $Varchar = _generate_type(
         my ( $self, $size ) = @_;
         my $parent = $self->parent->my_methods->{dbic_column_info};
         return (
-            $parent->( $self->parent, $size || $self->type_parameter ),
+            $parent->( $self->parent, $size // $self->type_parameter ),
             data_type => 'varchar',
-            maybe size => $size || $self->type_parameter,
+            maybe size => $size // $self->type_parameter,
         );
     },
 );
@@ -124,9 +124,9 @@ our $Char = _generate_type(
         my ( $self, $size ) = @_;
         my $parent = $self->parent->my_methods->{dbic_column_info};
         return (
-            $parent->( $self->parent, $size || $self->type_parameter || 1 ),
+            $parent->( $self->parent, $size // $self->type_parameter // 1 ),
             data_type => 'char',
-            size      => $size || $self->type_parameter || 1,
+            size      => $size // $self->type_parameter // 1,
         );
     },
 );
@@ -148,7 +148,7 @@ our $Integer = _generate_type(
         return (
             data_type  => 'integer',
             is_numeric => 1,
-            maybe size => $size || $self->type_parameter,
+            maybe size => $size // $self->type_parameter,
         );
     },
 );
@@ -182,7 +182,7 @@ our $Serial = _generate_type(
         my ( $self, $size ) = @_;
         my $parent = $self->parent->my_methods->{dbic_column_info};
         return (
-            $parent->( $self->parent, $size || $self->type_parameter ),
+            $parent->( $self->parent, $size // $self->type_parameter ),
             data_type         => 'serial',
             is_auto_increment => 1,
         );
@@ -208,7 +208,7 @@ our $Numeric = _generate_type(
         return (
             data_type  => 'numeric',
             is_numeric => 1,
-            maybe size => $size || $self->parameters,
+            maybe size => $size // $self->parameters,
         );
     },
 );
@@ -228,7 +228,7 @@ sub _size_constraint_generator {
 sub _size_range_constraint_generator {
     if (@_) {
         my ( $prec, $scale ) = @_;
-        $scale ||= 0;
+        $scale //= 0;
 
         die "Precision must be a positive integer" unless $prec =~ /^[1-9]\d*$/;
         die "Scale must be a positive integer"     unless $scale =~ /^\d+$/;
