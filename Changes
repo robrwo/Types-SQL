@@ -2,7 +2,7 @@ Revision history for {{ $dist->name }}
 
 {{$NEXT}}
   [Bug Fixes]
-  - Char with no size parameter should default to 1.  Note that this may be an incompatible change.
+  - Char with no size parameter should default to 1. N.B. this may be an incompatible change.
 
   [Documentation]
   - Bumped copyright year.
