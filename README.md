@@ -4,7 +4,7 @@ Types::SQL - a library of SQL types
 
 # VERSION
 
-version v0.4.1
+version v0.5.0
 
 # SYNOPSIS
 
