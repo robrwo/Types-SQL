@@ -157,7 +157,7 @@ Slaven Rezić <slaven@rezic.de>
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2016-2020 by Robert Rothenberg.
+This software is Copyright (c) 2016-2022 by Robert Rothenberg.
 
 This is free software, licensed under:
 
