@@ -258,6 +258,22 @@ my %FROM_TYPE = (
 
     },
 
+    'Types::DateTime' => {
+
+        'DateTime' => sub {
+            return ( data_type => 'timestamp' );
+        },
+
+        'DateTimeWithZone' => sub {
+            return ( data_type => 'timestamp with time zone' );
+        },
+
+        'Now' => sub {
+            return ( data_type => 'timestamp', default_value => \ "CURRENT_TIMESTAMP"  );
+        },
+    },
+
+
 );
 
 
