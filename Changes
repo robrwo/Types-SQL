@@ -4,6 +4,8 @@ Revision history for {{ $dist->name }}
   [Enhancements]
   - Recognise some types from Types::DateTime.
 
+  - Recognise InstanceOf['Date'].
+
   [Bug Fixes]
   - Use "timestamp" type instead of "datetime" type for various DateTime-like objects.
 

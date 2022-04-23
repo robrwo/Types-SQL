@@ -114,4 +114,18 @@ subtest 'Maybe InstanceOf[Time::Piece]' => sub {
 
 };
 
+subtest 'IntstanceOf[Date]' => sub {
+
+    my $type = InstanceOf['Date'];
+
+    isa_ok $type => 'Type::Tiny';
+
+    my %info = column_info_from_type($type);
+
+    is_deeply \%info => { data_type => 'timestamp' },
+      'column_info'
+      or note( explain \%info );
+
+};
+
 done_testing;

@@ -59,8 +59,11 @@ L<DBIx::Class::InflateColumn::Object::Enum>.
 
 =head3 C<InstanceOf>
 
-For L<DateTime>, L<DateTime::Tiny>, L<Time::Moment> and L<Time::Piece>
-objects, this is treated as a C<timestamp>.
+For L<Date>, L<DateTime>, L<DateTime::Tiny>, L<Time::Moment> and
+L<Time::Piece> objects, this is treated as a C<timestamp>.
+
+If you want a timestamp with a time zone, use L<Types::DateTime>
+C<DateTimeWithZone> or C<DateTimeUTC> type.
 
 =head3 C<Int>
 
@@ -114,12 +117,18 @@ These are treated the same as L</SimpleStr>. In the future, if
 L<DBIx::Class> supports database-related constraints, this will be
 added to the metadata.
 
+=head3 C<Now>
+
+From L<Types::DateTime>. This is a C<timestamp> with a default set to
+the SQL C<current_timestamp> function.
+
 =cut
 
 our @EXPORT    = qw/ column_info_from_type /;
 our @EXPORT_OK = @EXPORT;
 
 my %CLASS_TYPES = (
+    'Date'                       => 'timestamp',
     'DateTime'                   => 'timestamp',
     'DateTime::Tiny'             => 'timestamp',
     'JSON::PP::Boolean'          => 'boolean',
