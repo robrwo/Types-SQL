@@ -77,6 +77,8 @@ L<Time::Piece> objects, this is treated as a C<timestamp>.
 If you want a timestamp with a time zone, use L<Types::DateTime>
 C<DateTimeWithZone> or C<DateTimeUTC> type.
 
+L<Data::UUID> or L<Data::GUID> will be treated as C<uuid>.
+
 =head3 C<Int>
 
 This is treated as an C<integer> without a precision.
@@ -134,12 +136,18 @@ added to the metadata.
 From L<Types::DateTime>. This is a C<timestamp> with a default set to
 the SQL C<current_timestamp> function.
 
+=head3 C<Uuid>
+
+From L<Types::UUID>. This is a C<uuid>.
+
 =cut
 
 our @EXPORT    = qw/ column_info_from_type /;
 our @EXPORT_OK = @EXPORT;
 
 my %CLASS_TYPES = (
+    'Data::UUID'                 => 'uuid',
+    'Data::GUID'                 => 'uuid',
     'Date'                       => 'timestamp',
     'DateTime'                   => 'timestamp',
     'DateTime::Tiny'             => 'timestamp',
@@ -298,6 +306,13 @@ my %FROM_TYPE = (
         },
     },
 
+    'Types::UUID' => {
+
+        'Uuid' => sub {
+            return ( data_type => 'uuid' ),
+        },
+
+    },
 
 );
 
