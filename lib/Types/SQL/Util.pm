@@ -295,6 +295,14 @@ sub column_info_from_type {
         return $methods->{dbic_column_info}->($type);
     }
 
+    my $from = ( $type->library ? $FROM_TYPE{ $type->library } : undef ) // { };
+
+    if ( my $code = $from->{$name} ) {
+        if ( my %info = $code->($type) ) {
+            return %info;
+        }
+    }
+
     if ( $type->isa('Type::Tiny::Enum') ) {
         return (
             data_type  => 'enum',
@@ -311,12 +319,6 @@ sub column_info_from_type {
             if ( my %info = $code->($type) ) {
                 return %info;
             }
-        }
-    }
-
-    if ( my $code = $FROM_TYPE{ $type->library }{$name} ) {
-        if ( my %info = $code->($type) ) {
-            return %info;
         }
     }
 
