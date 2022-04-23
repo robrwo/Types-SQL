@@ -41,8 +41,10 @@ C<add_column> method of L<DBIx::Class::ResultSource>, based on the
 type.
 
 Besides the types from L<Types::SQL>, it also supports the following
-types from L<Types::Standard>, L<Types::Common::String>, and
-L<Types::Common::Numeric>:
+types.
+
+Unless noted, these come from L<Types::Standard>,
+L<Types::Common::String> or L<Types::Common::Numeric>.
 
 =head3 C<ArrayRef>
 
@@ -51,6 +53,16 @@ This treats the type as an array.
 =head3 C<Bool>
 
 This is treated as a C<boolean> type.
+
+=head3 C<DateTime>
+
+From L<Types::DateTime>. This is a C<timestamp>.
+
+=head3 C<DateTimeUTC>
+
+=head3 C<DateTimeWithZone>
+
+From L<Types::DateTime>. These are C<timestamp with time zone>.
 
 =head3 C<Enum>
 
