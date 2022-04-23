@@ -268,6 +268,10 @@ my %FROM_TYPE = (
             return ( data_type => 'timestamp with time zone' );
         },
 
+        'DateTimeUTC' => sub {
+            return ( data_type => 'timestamp with time zone' );
+        },
+
         'Now' => sub {
             return ( data_type => 'timestamp', default_value => \ "CURRENT_TIMESTAMP"  );
         },
