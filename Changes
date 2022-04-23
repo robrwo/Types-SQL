@@ -4,6 +4,9 @@ Revision history for {{ $dist->name }}
   [Enhancements]
   - Recognise some types from Types::DateTime.
 
+  [Bug Fixes]
+  - Use "timestamp" type instead of "datetime" type for various DateTime-like objects.
+
 v0.5.0    2022-04-21 17:13:34+01:00 Europe/London
   [Incompatibilies]
   - Support for Perls before v5.10 has been removed.
