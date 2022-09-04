@@ -8,7 +8,7 @@ use Exporter 5.57 qw/ import /;
 use PerlX::Maybe qw/ maybe /;
 use Safe::Isa 1.000008 qw/ $_isa $_call_if_can /;
 
-our $VERSION = 'v0.6.1';
+our $VERSION = 'v0.6.2';
 
 # RECOMMEND PREREQ: PerlX::Maybe::XS
 
