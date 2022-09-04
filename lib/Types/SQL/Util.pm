@@ -3,7 +3,7 @@ package Types::SQL::Util;
 use strict;
 use warnings;
 
-use Exporter qw/ import /;
+use Exporter 5.57 qw/ import /;
 
 use PerlX::Maybe qw/ maybe /;
 use Safe::Isa 1.000008 qw/ $_isa $_call_if_can /;
