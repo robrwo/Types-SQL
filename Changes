@@ -4,6 +4,9 @@ Revision history for {{ $dist->name }}
   [Incompatible Changes]
   - Upgraded the minimum Perl version to v5.14.
 
+  [Bug Fixes]
+  - Improved regular expressions to only match ASCII digits.
+
   [Documentation]
   - Documented support policy for older Perls.
 

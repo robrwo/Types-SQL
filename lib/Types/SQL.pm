@@ -214,12 +214,12 @@ our $Numeric = _generate_type(
 sub _size_constraint_generator {
     if (@_) {
         my ($size) = @_;
-        die "Size must be a positive integer" unless $size =~ /^[1-9]\d*$/;
-        my $re = qr/^0*\d{1,$size}$/;
+        die "Size must be a positive integer" unless $size =~ /^[1-9]\d*$/a;
+        my $re = qr/^0*\d{1,$size}$/a;
         return sub { $_ =~ $re };
     }
     else {
-        return sub { $_ =~ /^\d+$/ };
+        return sub { $_ =~ /^\d+$/a };
     }
 }
 
@@ -228,17 +228,17 @@ sub _size_range_constraint_generator {
         my ( $prec, $scale ) = @_;
         $scale //= 0;
 
-        die "Precision must be a positive integer" unless $prec =~ /^[1-9]\d*$/;
-        die "Scale must be a positive integer"     unless $scale =~ /^\d+$/;
+        die "Precision must be a positive integer" unless $prec =~ /^[1-9]\d*$/a;
+        die "Scale must be a positive integer"     unless $scale =~ /^\d+$/a;
 
         my $left = $prec - $scale;
         die "Scale must be less than the precision" if ( $left < 0 );
 
-        my $re = qr/^0*\d{0,$left}([.]\d{0,$scale}0*)?$/;
+        my $re = qr/^0*\d{0,$left}([.]\d{0,$scale}0*)?$/a;
         return sub { $_ =~ $re };
     }
     else {
-        return sub { $_ =~ /^\d+$/ };
+        return sub { $_ =~ /^\d+$/a };
     }
 }
 
