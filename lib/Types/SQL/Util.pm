@@ -1,6 +1,6 @@
 package Types::SQL::Util;
 
-use strict;
+use v5.14;
 use warnings;
 
 use Exporter 5.57 qw/ import /;
