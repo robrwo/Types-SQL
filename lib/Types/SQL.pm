@@ -9,7 +9,7 @@ use Type::Library
 
 use Ref::Util qw/ is_arrayref /;
 use Type::Utils 0.44 -all;
-use Types::Standard -types;
+use Types::Standard qw/ Int Num Str /;;
 use PerlX::Maybe qw/ maybe /;
 
 use namespace::autoclean;
