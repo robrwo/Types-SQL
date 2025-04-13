@@ -4,6 +4,9 @@ Revision history for {{ $dist->name }}
   [Enhancements]
   - Improved internals.
 
+  [Documentation]
+  - Bump copyright year.
+
 v0.7.0    2023-06-02 17:29:04+01:00 Europe/London
   [Incompatible Changes]
   - Upgraded the minimum Perl version to v5.14.
