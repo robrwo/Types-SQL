@@ -7,6 +7,8 @@ Revision history for {{ $dist->name }}
   [Documentation]
   - Bump copyright year.
 
+  - Added a security policy.
+
 v0.7.0    2023-06-02 17:29:04+01:00 Europe/London
   [Incompatible Changes]
   - Upgraded the minimum Perl version to v5.14.

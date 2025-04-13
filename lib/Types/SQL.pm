@@ -298,6 +298,13 @@ L<Types::SQL::Util>, which provides a utility function for translating
 these types and other types from L<Types::Standard> into column
 information for L<DBIx::Class::ResultSource>.
 
+=head1 append:BUGS
+
+=head2 Reporting Security Vulnerabilities
+
+Security issues should not be reported on the bugtracker website. Please see F<SECURITY.md> for instructions how to
+report security vulnerabilities
+
 =cut
 
 __PACKAGE__->meta->make_immutable;
